@@ -7,7 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Boggle {
+import boggleValidationsRecursive.BoogleInterface;
+
+public class Boggle implements BoogleInterface {
 
 	//List to store words of the dictionary.
 	private List<String> dictionary;
@@ -51,7 +53,7 @@ public class Boggle {
 	 * stream source to read data from the given file
 	 * return true if dictionary is ready to use for puzzle solving else false 
 	 */
-	boolean getDictionary(BufferedReader stream){
+	public boolean getDictionary(BufferedReader stream){
 
 		//Return false if the given stream has not been instantiated 
 		if (stream == null) {
@@ -75,7 +77,7 @@ public class Boggle {
 				}
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			return false; 
 		}
 		return true;
@@ -87,7 +89,7 @@ public class Boggle {
 	 * stream source to read data from the given file
 	 * return true if puzzle is read and ready for puzzle solving else false. 
 	 */
-	boolean getPuzzle(BufferedReader stream){
+	public boolean getPuzzle(BufferedReader stream){
 
 		int index = 0;
 		//Return false if the given stream has not been instantiated
@@ -121,7 +123,7 @@ public class Boggle {
 				}
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			return false;
 		}
 
@@ -132,7 +134,7 @@ public class Boggle {
 	 * 
 	 * */
 	private void formPuzzleBoard() {
-		// TODO Auto-generated method stub
+		
 		
 		//Instantiate NxN array for puzzle grid and keep track of all visited cell.
 		board = new String[lettersOfGrid.size()][lettersOfGrid.get(0).length()];
@@ -171,7 +173,7 @@ public class Boggle {
 	 * return list of words of the dictionary found from the puzzle grid by
 	 * satisfying all constraints of the game
 	 */
-	List<String> solve() {
+	public List<String> solve() {
 
 		// List to maintain list of all words found in the puzzle grid.
 		List<String> wordFound = new ArrayList<String>();
@@ -252,7 +254,7 @@ public class Boggle {
 	 */
 	public boolean searchWord(int column, int row, StringBuffer path, boolean[][] visited, StringBuffer word,
 			String wordToBefound, int startX, int startY, List<String> wordFound) {
-		// TODO Auto-generated method stub
+		
 		
 		//If word is found  then mark it as true and stop searching process for other directions.
 		boolean stopChecking = false;
@@ -364,7 +366,7 @@ public class Boggle {
 			1,2    				3,2			 
 	 */
 	public List<String> sortXYCoordinates(List<String> coordinatesToBeSort) {
-		// TODO Auto-generated method stub
+		
 		List<String> sortedCoordinates = new ArrayList<String>();
 
 		
